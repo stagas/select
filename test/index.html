@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>select</title>
+    <link rel="stylesheet" href="../build/build.css">
+  </head>
+  <body>
+    <input id="full" type="text" value="Hello, world!">
+    <input id="partial" type="text" value="Hello, world!">
+    <input id="autoend" type="text" value="Hello, world!">
+    <script src="../build/build.js"></script>
+    <script>
+
+    var select = require('select')
+
+    var inputFull = document.getElementById('full')
+    var inputPartial = document.getElementById('partial')
+    var inputAutoEnd = document.getElementById('autoend')
+
+    inputFull.onclick = function () {
+      select(inputFull)
+    }
+
+    inputPartial.onclick = function () {
+      select(inputPartial, 5, 9)
+    }
+
+    inputAutoEnd.onclick = function () {
+      select(inputAutoEnd, 5)
+    }
+
+    </script>
+  </body>
+</html>
