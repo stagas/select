@@ -1,7 +1,7 @@
 {
   "name": "select",
-  "version": "0.0.2",
-  "description": "cross-browser input selection range",
+  "version": "0.1.0",
+  "description": "cross-browser input and contenteditable selection range",
   "keywords": ["input","select","selection","range"],
   "author": "stagas",
   "license": "MIT",

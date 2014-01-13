@@ -8,6 +8,10 @@
     <input id="full" type="text" value="Hello, world!">
     <input id="partial" type="text" value="Hello, world!">
     <input id="autoend" type="text" value="Hello, world!">
+    <div id="ce-full" contenteditable>Hello, world!</div>
+    <div id="ce-partial" contenteditable>Hello, world!</div>
+    <div id="ce-autoend" contenteditable>Hello, world!</div>
+    <div id="ce-complex" contenteditable>Hel<span>lo,</span> <span>wor</span>ld!</div>
     <script src="../build/build.js"></script>
     <script>
 
@@ -27,6 +31,27 @@
 
     inputAutoEnd.onclick = function () {
       select(inputAutoEnd, 5)
+    }
+
+    var ceFull = document.getElementById('ce-full')
+    var cePartial = document.getElementById('ce-partial')
+    var ceAutoEnd = document.getElementById('ce-autoend')
+    var ceComplex = document.getElementById('ce-complex')
+
+    ceFull.onclick = function () {
+      select(ceFull)
+    }
+
+    cePartial.onclick = function () {
+      select(cePartial, 5, 9)
+    }
+
+    ceAutoEnd.onclick = function () {
+      select(ceAutoEnd, 5)
+    }
+
+    ceComplex.onclick = function () {
+      select(ceComplex)
     }
 
     </script>

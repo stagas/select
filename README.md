@@ -1,7 +1,7 @@
 
 # select
 
-cross-browser input selection range
+cross-browser input and contenteditable selection range
 
 ## Install
 

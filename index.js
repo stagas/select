@@ -22,7 +22,9 @@ module.exports = select;
  */
 
 function select (input, start, end) {
-  var value = input.value;
+  var editable = 'true' === input.contentEditable; // yes, string 'true' ..
+  var target = editable ? document.body : input;
+  var value = editable ? input.lastChild : input.value;
   var length = value.length;
 
   // behave a bit like .slice
@@ -34,9 +36,10 @@ function select (input, start, end) {
     break
   }
 
-  if (input.createTextRange) {
+  if (target.createTextRange) {
     // use text ranges for Internet Explorer
-    var range = input.createTextRange();
+    var range = target.createTextRange();
+    if (editable) range.moveToElementText(input);
     range.moveStart('character', start);
     range.moveEnd('character', end - length);
     range.select();
@@ -44,5 +47,14 @@ function select (input, start, end) {
   else if (input.setSelectionRange) {
     // use setSelectionRange() for Mozilla/WebKit
     input.setSelectionRange(start, end);
+  }
+  else {
+    // contentEditable selection for Mozilla/WebKit
+    var selection = window.getSelection();
+    var range = document.createRange();
+    range.setStart(input.firstChild, start);
+    range.setEnd(input.lastChild, end);
+    selection.removeAllRanges();
+    selection.addRange(range);
   }
 };
